@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<header>
+</header>
+  <body>
+    <div class="container pt-5">
+      <section class="card col-md-8 offset-md-2 pt-3">
+        <section class="py-4">
+          <% flash.each do |key, value| %>
+            <%= content_tag :div, value, class: "alert alert-warning flash #{key}" %>
+          <% end %>
+        </section>
+        <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i>'.html_safe, tarefas_path %>
+        <div class="form-group pt-2">
+          <h4>Adicionar tarefa</h4>
+          <%= form_for @tarefa, url: {action: :create} do |f| %>
+            <%= f.text_field :descricao, class:'form-control' %>
+            <div class="pt-2">
+              <%= f.label "Esta tarefa está completa?" %>
+              <%= f.check_box :completa %>
+            </div>
+            <div class="pt-2">
+              <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+            </div>
+          <%end%>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <section class="card col-md-8 offset-md-2">
+        <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i>'.html_safe, tarefas_path %>
+        <h3 class="mx-auto">Detalhes</h3>
+        <p>Descrição: <%=@tarefa.descricao%></p>
+        <p>Completa: <%=@tarefa.completa == true ? 'Sim' : 'Não' %></p>
+      </section>
+    </div>
+  </body>
+</html>

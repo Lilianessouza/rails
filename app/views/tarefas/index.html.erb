@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aplicativo de Tarefas</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-md-8 offset-md-2 pt-3">
+        <section>
+          <ul class="nav nav-pills">
+            <li class="nav-item pr-4">
+              <%=link_to '<span class="nav-link active text-white">Adicionar tarefa</span>'.html_safe, new_tarefa_path%>
+            </li>
+            <li class="nav-item pr-4">
+              <%=link_to '<span class="nav-link active text-white">Exportar relatório</span>'.html_safe, new_tarefa_path%>
+            </li>
+          </ul>
+        </section>
+        <section class="py-4">
+          <div>
+            <% flash.each do |key, value| %>
+              <div style="color:<%= key %>">
+                <a href="#" data-dismiss="alert">×</a>
+                  <%= value %>
+              </div>
+            <% end %>
+          </div>
+        </section>
+        <section class="pt-3">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>
+                  Descrição
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @tarefas.each do |tarefa| %>
+                <tr data-item-id=<%= "#{tarefa.id}" %> class="item">
+                  <td><%= tarefa.descricao %></td>
+                  <td><%= link_to '<i class="fa fa-list" aria-hidden="true"></i>
+                  '.html_safe, tarefa_path(tarefa) %></td>
+                  <td><%= link_to '<i class="fa fa-pencil" aria-hidden="true"></i>
+                  '.html_safe, edit_tarefa_path(tarefa.id)%></td>
+                  <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>
+                  '.html_safe, { action: :destroy, id: tarefa.id }, method: :delete, data: { confirm: 'Você tem certeza?' }%></td>
+              <% end %>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
