@@ -9,11 +9,11 @@
 * Deployment instructions
 Dentro da pasta do projeto:
   - executar:
-      <em>bundle install</em>
+      [i]bundle install[i]
 
 As migration estão criadas
   - executar:
-     <em>rails db:migrate</em>
+      rails db:migrate
 
   Será criado duas tabelas
   1. Tarefas: armazena a descrição da tarefa e um valor boolean para verificar se ela está ou não concluída.

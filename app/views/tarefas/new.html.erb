@@ -10,7 +10,7 @@
             <%= content_tag :div, value, class: "alert alert-warning flash #{key}" %>
           <% end %>
         </section>
-        <%= link_to '<i class="fa fa-arrow-left" aria-hidden="true"></i>'.html_safe, tarefas_path %>
+        <%= link_to '',tarefas_path , class: "fa fa-arrow-left aria-hidden='true'"  %>
         <div class="form-group pt-2">
           <h4>Adicionar tarefa</h4>
           <%= form_for @tarefa, url: {action: :create} do |f| %>
