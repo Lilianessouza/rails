@@ -16,7 +16,7 @@ class TarefasController < ApplicationController
 
   def create
     tarefa = Tarefa.new(tarefa_params)
-    if tarefa.save!
+    if tarefa.save
       if tarefa_params[:completa] == '1'
         @mensagem = gerar_mensagem_feliz
         create_or_update_evento(tarefa, 'Congratulations', @mensagem)

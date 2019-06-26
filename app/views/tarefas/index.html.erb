@@ -1,22 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Aplicativo de Tarefas</title>
+    <title>ToDo Rails</title>
   </head>
   <body>
     <div class="container">
-      <div class="col-md-8 offset-md-2 pt-3">
-        <section>
-          <ul class="nav nav-pills">
-            <li class="nav-item pr-4">
-              <%=link_to 'Adicionar tarefa', new_tarefa_path, class: 'btn btn-primary'%>
-            </li>
-            <li class="nav-item pr-4">
-              <%=link_to 'Exportar relatório', new_tarefa_path, class: 'btn btn-primary'%>
-            </li>
-          </ul>
-        </section>
-        <section class="py-4">
+      <div class="col-md-8 offset-md-2 pt-4">
+        <h1>ToDo List</h1> 
+        <section class="py-2">
           <div>
             <% flash.each do |key, value| %>
               <div style="color:<%= key %>">
@@ -26,12 +17,12 @@
             <% end %>
           </div>
         </section>
-        <section class="pt-3">
+        <section class="pt-4">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th>
-                  Descrição
+                  Tasks
                 </th>
               </tr>
             </thead>
@@ -39,13 +30,24 @@
               <% @tarefas.each do |tarefa| %>
                 <tr data-item-id=<%= "#{tarefa.id}" %> class="item">
                   <td><%= tarefa.descricao %></td>
+                  <td><%= check_box :completa, url: {action: :update,id: tarefa.id} %></td>
                   <td><%= link_to '', tarefa_path(tarefa), class: "fa fa-list aria-hidden='true'"%></td>
                   <td><%= link_to '', edit_tarefa_path(tarefa.id),class: "fa fa-pencil aria-hidden='true'"%></td>
                   <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>
-                  '.html_safe, { action: :destroy, id: tarefa.id }, method: :delete, data: { confirm: 'Você tem certeza?' }%></td>
+                  '.html_safe, { action: :destroy, id: tarefa.id }, method: :delete, data: { confirm: 'Are you sure?' }%></td>
               <% end %>
             </tbody>
           </table>
+        </section>
+        <section>
+          <ul class="nav nav-pills">
+            <li class="nav-item pr-4">
+              <%=link_to 'New toDo', new_tarefa_path, class: 'btn btn-primary'%>
+            </li>
+            <li class="nav-item pr-4">
+              <%=link_to 'Export List', new_tarefa_path, class: 'btn btn-primary'%>
+            </li>
+          </ul>
         </section>
       </div>
     </div>
