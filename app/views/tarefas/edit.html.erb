@@ -12,15 +12,15 @@
         </section>
         <%= link_to '', tarefas_path, class:"fa fa-arrow-left aria-hidden='true'" %>
         <div class="form-group pt-2">
-          <h4>Editar tarefa</h4>
+          <h4>Edit taks</h4>
           <%= form_for @tarefa, url: {action: :update} do |f| %>
             <%= f.text_field :descricao, class:'form-control' %>
             <div class="pt-2">
-              <%= f.label "Esta tarefa está completa?" %>
+              <%= f.label "taks complete?" %>
               <%= f.check_box :completa %>
             </div>
             <div class="pt-2">
-              <%= f.submit 'Salvar', class: 'btn btn-primary' %>
+              <%= f.submit 'Save', class: 'btn btn-primary' %>
             </div>
           <%end%>
         </div>

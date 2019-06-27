@@ -30,7 +30,7 @@
               <% @tarefas.each do |tarefa| %>
                 <tr data-item-id=<%= "#{tarefa.id}" %> class="item">
                   <td><%= tarefa.descricao %></td>
-                  <td><%= check_box :completa, url: {action: :update,id: tarefa.id} %></td>
+                  <td><%= tarefa.completa %></td>
                   <td><%= link_to '', tarefa_path(tarefa), class: "fa fa-list aria-hidden='true'"%></td>
                   <td><%= link_to '', edit_tarefa_path(tarefa.id),class: "fa fa-pencil aria-hidden='true'"%></td>
                   <td><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>
@@ -53,3 +53,4 @@
     </div>
   </body>
 </html>
+

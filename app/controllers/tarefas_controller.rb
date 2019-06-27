@@ -21,7 +21,6 @@ class TarefasController < ApplicationController
         @mensagem = gerar_mensagem_feliz
         create_or_update_evento(tarefa, 'Congratulations', @mensagem)
       end
-
     else
       flash[:error] = 'falha ao criar tarefa!'
     end
@@ -35,10 +34,8 @@ class TarefasController < ApplicationController
     if @tarefa.update(tarefa_params)
       if tarefa_params[:completa] == '1'
         @mensagem = gerar_mensagem_feliz
-        create_or_update_evento(@tarefa, 'Congratulations', @mensagem)
       else
         @mensagem = gerar_mensagem_triste
-        create_or_update_evento(@tarefa, 'Shame', @mensagem)
       end
       @cor = @mensagem[:cor]
       flash[@cor] = @mensagem[:mensagem]
@@ -64,6 +61,10 @@ class TarefasController < ApplicationController
     else
       Evento.create(tipo: tipo, dados: dados, tarefas_id: tarefa.id)
     end
+  end
+
+  def update_or_create!(tarefa, tipo, dados)
+        assign_or_new(attributes).save!
   end
 
   private
